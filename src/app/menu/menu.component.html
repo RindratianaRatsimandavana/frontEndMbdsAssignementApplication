@@ -1,0 +1,49 @@
+<!-- <mat-nav-list>
+    <mat-list-item>
+        <mat-icon mat-icon>person</mat-icon>
+        <h4>Person</h4>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <h4>Assignment</h4>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>domain</mat-icon>
+        <h4>Domain</h4>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4>Folder shared</h4>
+    </mat-list-item>
+</mat-nav-list> -->
+
+<div class="menu-header">
+    <div class="menu-text">
+        <!-- mboarina taille/ mbola ovaina logo na sary voir tuto hide text -->
+        <h1 [style.width.px]="getProfilePicSize()" [style.height.px]="getProfilePicSize()">ASSIGNEMENT</h1>
+    </div>
+</div>
+
+<mat-nav-list>
+    <a mat-list-item>
+        <mat-icon matListItemIcon>analytics</mat-icon>
+        <span matListItemTitle>analytics</span>
+    </a>
+    <a mat-list-item>
+        <mat-icon matListItemIcon>person</mat-icon>
+        <span matListItemTitle>person</span>
+    </a>
+    <a mat-list-item>
+        <mat-icon matListItemIcon>menu</mat-icon>
+        <span matListItemTitle>menu</span>
+    </a>
+
+
+</mat-nav-list>
+
+<!-- <mat-nav-list>
+    <a mat-list-item *ngFor="let item of menuItems()">
+    <mat-icon>/f item.icon )]</mat-icon>
+    <span>[f item.label hk/span>
+    </a>
+    </mat-nav-list> -->
