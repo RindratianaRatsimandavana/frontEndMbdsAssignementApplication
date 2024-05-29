@@ -8,5 +8,4 @@ export class Assignement {
   upload_fichier!: string; // tsy tadidiko hoe inona moa ny atao eto le fichier ve
   Email_Reminder!: boolean;
   id_classe!: string;
-  evalue!: boolean;
 }
