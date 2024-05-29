@@ -10,10 +10,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
-//import { NgZone } from '@angular/core';
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -53,13 +49,10 @@ export class LoginComponent {
       if (this.status) {
         this.profService.loginProf(login).subscribe(
           response => {
-            console.log('Login successful:', response);
+            console.log('Connexion réussie:', response);
             if (response.auth) {
               localStorage.setItem('token', response.token);
-              //this.router.navigate(['/home']);
-              // this.ngZone.run(() => {
-              //   this.router.navigate(['/home']);
-              // });
+              localStorage.setItem('id_matiere', response.id_matiere);
               this.router.navigate(['/home']).then(() => {
                 window.location.reload();
               });
@@ -69,7 +62,6 @@ export class LoginComponent {
           error => {
             console.error('Login error:', error);
             this.openSnackBar('Login error', 'Close');
-            //alert("")
           }
         );
       }

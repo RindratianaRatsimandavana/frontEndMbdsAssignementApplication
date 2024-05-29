@@ -7,7 +7,6 @@ import { Assignement } from '../modele/assignement';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 import { Contenu } from '../modele/contenu';
-//import { RouterLink } from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { DialogueComponent } from '../dialogue/dialogue.component';
 
@@ -31,33 +30,10 @@ export class NotationAssignementComponent implements OnInit{
   @ViewChild('myModal') modal!: ElementRef;
 
   contenus: Contenu[] = [];
-  
-  // contenus: Contenu[] = [
-  //   {
-  //     _id: '1',
-  //     id_assignment: 1,
-  //     id_eleve: 1,
-  //     reponse: 'Math',
-  //     commentaire: '',
-  //     note: -1,
-  //     dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert String to Date
-  //   },
-  //   {
-  //     _id: '2',
-  //     id_assignment: 2,
-  //     id_eleve: 2,
-  //     reponse: 'Science',
-  //     commentaire: '',
-  //     note: 0,
-  //     dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert String to Date
-  //   }
-  // ];
+ 
 
   private correspondanceEleve = new Map<String, String>([
-    ['665955acbdc14694fe1c0e97', 'Pascal Bruno'],
-    ['66595602bdc14694fe1c0e99', 'Patrick Murielle'],
-    ['6659565abdc14694fe1c0e9b', 'Erica Salazar '],
-    ['6659569dbdc14694fe1c0e9d', 'Fernando Rodriguez']
+    ['665796726100947559e9d05d', 'Garcia Manon']
   ]);
 
   getCorrespondingEleve(key: String | undefined): String {
@@ -67,7 +43,7 @@ export class NotationAssignementComponent implements OnInit{
     return this.correspondanceEleve.get(key) || 'eleve';
   }
 
-  noteAttribue = -1;
+  noteAttribue = 0;
   idContenuAnoter= '';
   commentaire= '';
 
@@ -77,18 +53,16 @@ export class NotationAssignementComponent implements OnInit{
   };
   
   ngOnInit() {
-    // Recuperation des query params (ce qui suit le ? dans l'url)
-    //console.log(this.route.snapshot.queryParams);
-    // Recuperation des fragment (ce qui suit le # dans l'url)
-    //console.log(this.route.snapshot.fragment);
-
-    // On recupere l'id de l'assignment dans l'URL à l'aide de ActivatedRoute
     const id = this.route.snapshot.params['id'];
-    // On utilise le service pour récupérer l'assignment avec cet id
     this.contenutService.getContenuByAssignment(id)
     .subscribe(assignment => {
       this.contenus = assignment;
     });
+  }
+
+  loadData()
+  {
+
   }
 
 
@@ -110,20 +84,6 @@ export class NotationAssignementComponent implements OnInit{
   }
 
 
-  // drop(event: CdkDragDrop<Contenu[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     const movedItem = event.previousContainer.data[event.previousIndex];
-  //     //movedItem.evalue = true;
-  //     transferArrayItem(event.previousContainer.data,
-  //                       event.container.data,
-  //                       event.previousIndex,
-  //                       event.currentIndex);
-  //     this.openModal(event);
-  //   }
-  // }
-
   drop(event: CdkDragDrop<Contenu[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -136,17 +96,7 @@ export class NotationAssignementComponent implements OnInit{
           event.container.data,
           event.previousIndex,
           event.currentIndex);
-        // if(this.openModal(event)==0)
-        // {
-        //   transferArrayItem(event.previousContainer.data,
-        //     event.container.data,
-        //     event.previousIndex,
-        //     event.currentIndex);
-        // }
-        // else
-        // {
-        //   alert("notation annulée")
-        // }
+       
       }
       
     }
@@ -186,20 +136,18 @@ export class NotationAssignementComponent implements OnInit{
       .subscribe((message) => {
         console.log(message);
         console.log("après update");
+        this.refreshContenus();
       });
-
-    // const item = this.contenus.find(c => c._id === this.idContenuAnoter);
-    // if (item) {
-    //   item.note = this.noteAttribue!;
-    // }
-
     this.closeModal();
   }
 
-
-  
-
-
+  refreshContenus() {
+    const id = this.route.snapshot.params['id'];
+    this.contenutService.getContenuByAssignment(id)
+      .subscribe(assignment => {
+        this.contenus = assignment;
+      });
+  }
 
 
   viewDetails() {

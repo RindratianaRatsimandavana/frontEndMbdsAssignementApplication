@@ -8,7 +8,7 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of getContenusSansNote()" cdkDrag>
-          {{getCorrespondingEleve(item.id_assignment)}}  <br/>
+          {{getCorrespondingEleve(item.id_eleve)}}  <br/>
         
           <button mat-button (click)="item.id_eleve ? openDialog(item.id_eleve) : null">Voir l'élève'</button>
         </div>

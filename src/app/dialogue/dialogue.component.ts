@@ -21,8 +21,8 @@ export class DialogueComponent implements OnInit{
   }
 
   private correspondancePromotion = new Map<String, String>([
-    ['6659548968ff5435557e2c23', 'prom_1'],
-    ['6659549868ff5435557e2c25', 'prom_2']
+    ['665795e56100947559e9d050', 'Promotion 1'],
+    ['665795ee6100947559e9d053', 'Promotion 2']
   ]);
 
   getCorrespondingPromotion(key: String | undefined): String {
@@ -33,11 +33,12 @@ export class DialogueComponent implements OnInit{
   }
 
   private correspondanceMatiere = new Map<String, String>([
-    ['6659570ebdc14694fe1c0ea0', 'Web avance'],
-    ['66595728bdc14694fe1c0ea2', 'Grails']
+    ['665796086100947559e9d056', 'Grails'],     
+    ['6657961c6100947559e9d059', 'Web avancé']
   ]);
 
   getCorrespondingMatiere(key: String | undefined): String {
+    console.log("idMatiere "+key)
     if (key === undefined) {
       return 'mat'; // Ou une valeur appropriée pour les cas undefined
     }
@@ -46,10 +47,7 @@ export class DialogueComponent implements OnInit{
   }
 
   private correspondanceEleve = new Map<String, String>([
-    ['665955acbdc14694fe1c0e97', 'Pascal Bruno'],
-    ['66595602bdc14694fe1c0e99', 'Patrick Murielle'],
-    ['6659565abdc14694fe1c0e9b', 'Erica Salazar '],
-    ['6659569dbdc14694fe1c0e9d', 'Fernando Rodriguez']
+    ['665796726100947559e9d05d', 'Garcia Manon']
   ]);
 
   getCorrespondingEleve(key: String | undefined): String {
@@ -58,7 +56,6 @@ export class DialogueComponent implements OnInit{
     }
     return this.correspondanceEleve.get(key) || 'prom';
   }
-
 
   ngOnInit(): void {
    this.loadData();

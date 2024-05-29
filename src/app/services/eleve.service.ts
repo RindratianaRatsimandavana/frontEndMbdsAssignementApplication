@@ -25,4 +25,6 @@ export class EleveService {
     console.log(this.uri + id);
     return this.http.get<Eleve>(this.uri + id);
   }
+
+  
 }
