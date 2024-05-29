@@ -27,6 +27,8 @@ export class NotationAssignementComponent {
 
   noteAttribue = -1;
   idContenuAnoter= '';
+  commentaire= '';
+  
 
   getContenusSansNote(): Contenu[] {
     return this.contenus.filter(item => item.note === -1);
@@ -86,6 +88,7 @@ export class NotationAssignementComponent {
     modalElement.style.display = 'flex';
     console.log("idContenu c'est "+this.idContenuAnoter);
     console.log("note c'est "+this.noteAttribue);
+    console.log("commentaire c'est "+this.commentaire);
     return 0;
   }
 
@@ -94,11 +97,13 @@ export class NotationAssignementComponent {
     modalElement.style.display = 'none';
     this.noteAttribue = -1;
     this.idContenuAnoter = '';
+    this.commentaire = '';
   }
 
   onSubmit() {
     console.log('ID:', this.idContenuAnoter);
     console.log('Note:', this.noteAttribue);
+    console.log('Commentaire:', this.commentaire);
 
     const item = this.contenus.find(c => c._id === this.idContenuAnoter);
     if (item) {

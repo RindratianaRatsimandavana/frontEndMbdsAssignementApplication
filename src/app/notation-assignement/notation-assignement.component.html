@@ -36,6 +36,8 @@
         <label for="note">Note:</label>
         <input type="number" id="note" name="note" min="0" [(ngModel)]="noteAttribue" required>
         <input type="hidden" id="idContenu" name="idContenu" [(ngModel)]="idContenuAnoter">
+        <label for="commentaire">Commentaire:</label>
+        <input type="text" id="commentaire" name="commentaire" [(ngModel)]="commentaire">
         <button type="submit">Soumettre</button>
       </form>
       <a href="#" (click)="viewDetails()">Voir les détails</a>
