@@ -1,4 +1,49 @@
-# AssignementApplication
+## AssignementApplication  
+# Collabrateur :  
+N° 1 ANDRIAMAHANINTSOA Elodie  
+N° 48 RATSIMANDAVANA Rindratiana Holiniaina  
+
+# Introduction : 
+Ceci est une application, ou plutôt une plateforme, pour les professeurs et les étudiants.   
+Elle permet aux professeurs d'envoyer des devoirs et aux étudiants de répondre à ces devoirs qui leur sont destinés.  
+
+# Quelles sont les étapes à suivre pour la faire fonctionner sur votre machine?  
+Cette partie est la partir FrontEnd du projet rattaché au BackEnd : https://github.com/Andriamah/AssignmentsBackElodie-Rindra.  
+  
+`<br>`
+- Naviguez vers le répertoire où vous souhaitez cloner le dépôt
+- Commencer par cloner le projet , voici la commande à exécuter dans le cmd : 
+    `git clone `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
 
