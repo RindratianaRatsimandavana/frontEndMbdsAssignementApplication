@@ -1,0 +1,29 @@
+<div cdkDropListGroup>
+    <div class="example-container">
+      <h2>Reçu</h2>
+      <div
+        cdkDropList
+        id="cdk-drop-list-recu"
+        [cdkDropListData]="getUnratedAssignments()"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of getUnratedAssignments()" cdkDrag>
+          {{item.titre}} ({{item.dateDeRendu | date}})
+        </div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Noté</h2>
+      <div
+        cdkDropList
+        id="cdk-drop-list-notes"
+        [cdkDropListData]="getRatedAssignments()"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of getRatedAssignments()" cdkDrag>
+          {{item.titre}} ({{item.dateDeRendu | date}})
+        </div>
+      </div>
+    </div>
+</div>

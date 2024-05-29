@@ -19,13 +19,13 @@ export class MenuComponent {
   menuItems = signal<Menultem[]>([
     {
       icon: 'analytics',
-      label: 'analytics',
-      route:'analytics'
+      label: 'Les assignements',
+      route:'home'
     },
     {
       icon: 'analytics',
-      label: 'analytics',
-      route:'analytics'
+      label: 'Ajout des assignements',
+      route:'create'
     }
   ]);
 

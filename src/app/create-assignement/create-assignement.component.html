@@ -1,0 +1,89 @@
+<mat-stepper [linear]="isLinear" #stepper>
+  <!-- Form Step 1 -->
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Assignement Details</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="titre" placeholder="Enter the title">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="matiere" placeholder="Select the subject">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Target Class</mat-label>
+          <mat-select formControlName="classe" placeholder="Select the target class">
+            <mat-option *ngFor="let promotion of listePromotion" [value]="promotion">{{ promotion }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Form Step 2 -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Assignment Details (Cont'd)</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateDeRendu" placeholder="Select due date">
+          <mat-hint>dd/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>File Type to Render</mat-label>
+          <mat-select formControlName="typeFichier" placeholder="Select file type">
+            <mat-option *ngFor="let type of listeTypeArendre" [value]="type">{{ type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <div>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" placeholder="Enter assignment description"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Form Step 3 -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <div>
+        <mat-checkbox formControlName="emailReminder">Email Reminder</mat-checkbox>
+      </div>
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <h3>Confirmation</h3>
+      <p><strong>Titre:</strong> {{ firstFormGroup.get('titre')?.value }}</p>
+      <p><strong>Matière:</strong> {{ firstFormGroup.get('matiere')?.value }}</p>
+      <p><strong>Classe cible:</strong> {{ firstFormGroup.get('classe')?.value }}</p>
+      <p><strong>Date de rendu:</strong> {{ secondFormGroup.get('dateDeRendu')?.value | date }}</p>
+      <p><strong>Type de fichier:</strong> {{ secondFormGroup.get('typeFichier')?.value }}</p>
+      <p><strong>Description:</strong> {{ secondFormGroup.get('description')?.value }}</p>
+      <p><strong>Email de rappel:</strong> {{ thirdFormGroup.get('emailReminder')?.value ? 'Oui' : 'Non' }}</p>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button (click)="stepper.reset()">Réinitialiser</button>
+        <button mat-raised-button (click)="submitForms()">Ajouter</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

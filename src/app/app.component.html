@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z3">
+<!-- <mat-toolbar class="mat-elevation-z3">
   <button mat-icon-button (click)="collapsed.set(!collapsed())">
     <mat-icon>menu</mat-icon>
   </button>
@@ -8,11 +8,77 @@
   <mat-sidenav opened mode="side" [style.width]="sidenavwidth()">
     <app-menu [collapsed]="collapsed"></app-menu>
   </mat-sidenav>
-  <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">    
-    dashboars
-    <router-outlet></router-outlet>
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()"> 
+    <mat-card class="full-page-card">
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+    
+    
   </mat-sidenav-content>
 </mat-sidenav-container> 
 
 
+   -->
+   @if(isConnected) {
+    <mat-toolbar class="mat-elevation-z3">
+      <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav opened mode="side" [style.width]="sidenavwidth()">
+        <app-menu [collapsed]="collapsed"></app-menu>
+      </mat-sidenav>
+      <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">
+        <mat-card class="full-page-card">
+          <mat-card-header>
+            <mat-card-title></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <router-outlet></router-outlet>
+          </mat-card-content>
+        </mat-card>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  } @else {
+    <mat-toolbar class="mat-elevation-z3">
+      
+    </mat-toolbar>
+    <app-login></app-login>
+  }
+
+
+   <!-- <ng-container *ngIf="isConnected; else loginTemplate">
+    <mat-toolbar class="mat-elevation-z3">
+      <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav opened mode="side" [style.width]="sidenavwidth()">
+        <app-menu [collapsed]="collapsed"></app-menu>
+      </mat-sidenav>
+      <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">
+        <mat-card class="full-page-card">
+          <mat-card-header>
+            <mat-card-title></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <router-outlet></router-outlet>
+          </mat-card-content>
+        </mat-card>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </ng-container>
+  
+  <ng-template #loginTemplate>
+    <app-login></app-login>
+  </ng-template> -->
   
