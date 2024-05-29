@@ -10,7 +10,7 @@ export class ProfService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/';
+  uri = 'https://expressbackmbdsmadagascar2024.onrender.com/';
 
 
   loginProf(credentials: { email: string | null | undefined; password: string | null | undefined; }): Observable<any> {

@@ -10,7 +10,7 @@ export class EleveService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/eleve/';
+  uri = 'https://expressbackmbdsmadagascar2024.onrender.com/eleve/';
 
 
   // loginEleve(credentials: { email: string | null | undefined; password: string | null | undefined; }): Observable<any> {

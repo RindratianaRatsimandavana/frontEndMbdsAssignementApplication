@@ -10,7 +10,7 @@ export class ContenuService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/contenu/';
+  uri = 'https://expressbackmbdsmadagascar2024.onrender.com/contenu/';
 
   // addContenu(formData: FormData): Observable<any> {
   //   console.log('ici fromdta ',formData)

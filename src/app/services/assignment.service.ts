@@ -11,7 +11,7 @@ export class AssignmentService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/assignment/';
+  uri = 'https://expressbackmbdsmadagascar2024.onrender.com/assignment/';
 
   addAssignment(assignment: Assignement): Observable<any> {
     return this.http.post<Assignement>(this.uri, assignment);
