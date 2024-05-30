@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 
-import {FormBuilder, Validators, FormsModule, ReactiveFormsModule,FormGroup} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button'; 
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AssignmentService } from '../services/assignment.service';
+import { Router } from '@angular/router';
 
 
 
@@ -19,10 +21,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 @Component({
   selector: 'app-create-assignement',
   standalone: true,
-  providers:[provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter()],
   imports: [
     MatCheckboxModule,
-    CommonModule,MatSelectModule,
+    CommonModule, MatSelectModule,
     MatDatepickerModule,
     MatButtonModule,
     MatStepperModule,
@@ -48,8 +50,11 @@ export class CreateAssignementComponent {
   //   secondCtrl: ['', Validators.required],
   // });
   isLinear = true;
-  
-  constructor(private _formBuilder: FormBuilder) {
+
+  constructor(private _formBuilder: FormBuilder,
+    private assignmentService: AssignmentService,
+    private router: Router
+  ) {
     this.firstFormGroup = this._formBuilder.group({
       titre: ['', Validators.required],
       matiere: ['', Validators.required],
@@ -72,15 +77,29 @@ export class CreateAssignementComponent {
     const assignementData = {
       titre: this.firstFormGroup.value.titre,
       dateDeRendu: this.secondFormGroup.value.dateDeRendu,
-      id_matiere: this.firstFormGroup.value.matiere,
+      // id_matiere: this.firstFormGroup.value.matiere,
+      id_matiere: 0,
       id_type_a_rendre: this.secondFormGroup.value.typeFichier,
       Description: this.secondFormGroup.value.description,
       upload_fichier: '', // atao inona moa ty
-      Email_Reminder: this.thirdFormGroup.value.emailReminder,
-      id_classe: this.firstFormGroup.value.classe,
-      evalue : false
+      email_reminder: this.thirdFormGroup.value.emailReminder,
+      // id_promotion: this.firstFormGroup.value.classe,
+      id_promotion: 1,
+      evalue: false
     };
+    this.assignmentService
+      .addAssignment(assignementData)
+      .subscribe((reponse) => {
+        console.log(reponse);
+        // On navigue pour afficher la liste des assignments
+        // en utilisant le router de manière programmatique
+      },
+        error => {
+          console.error('Login error:', error);
+          // this.openSnackBar('Login error', 'Close');
+          this.router.navigate(['/login']);
 
+        });
     console.log('Assignement Data:', assignementData);
     // Insérer ici le code pour soumettre les données via une requête POST
   }
