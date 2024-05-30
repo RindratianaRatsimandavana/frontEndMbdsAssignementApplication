@@ -51,7 +51,7 @@ export class LoginComponent {
             console.log('Login successful:', response);
             if (response.auth) {
 
-              this.router.navigate(['/create']);
+              this.router.navigate(['/home']);
               localStorage.setItem('token', response.token);
               ;
             }
