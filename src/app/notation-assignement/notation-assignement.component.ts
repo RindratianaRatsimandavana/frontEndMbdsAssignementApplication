@@ -21,8 +21,24 @@ export class NotationAssignementComponent {
   
 
   contenus: Contenu[] = [
-    { _id: '1', id_assignement: 'Math', id_eleve: 'John', reponse: 'Math', Commentaire: '', note: -1 },
-    { _id: '2', id_assignement: 'Science', id_eleve: 'Oli', reponse: 'Science', Commentaire: '', note: 0 }
+    {
+      _id: '1',
+      id_assignment: 1,
+      id_eleve: 1,
+      reponse: 'Math',
+      commentaire: '',
+      note: -1,
+      dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert string to Date
+    },
+    {
+      _id: '2',
+      id_assignment: 2,
+      id_eleve: 2,
+      reponse: 'Science',
+      commentaire: '',
+      note: 0,
+      dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert string to Date
+    }
   ];
 
   noteAttribue = -1;

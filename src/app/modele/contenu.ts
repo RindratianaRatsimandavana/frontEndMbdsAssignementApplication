@@ -1,9 +1,10 @@
 export class Contenu {
     _id?: string;
-    id_assignement?: string;
-    id_eleve?: string;
+    id_assignment?: Number;
+    id_eleve?: Number;
     reponse?: string;
-    Commentaire?: string;
+    commentaire?: string;
     note?: number;
+    dateRendu?: Date
 }
 
