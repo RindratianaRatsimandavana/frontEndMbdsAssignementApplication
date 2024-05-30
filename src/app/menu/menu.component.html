@@ -1,51 +1,27 @@
-<!-- <mat-nav-list>
-    <mat-list-item>
-        <mat-icon mat-icon>person</mat-icon>
-        <h4>Person</h4>
-    </mat-list-item>
-    <mat-list-item>
-        <mat-icon mat-list-icon>assignment</mat-icon>
-        <h4>Assignment</h4>
-    </mat-list-item>
-    <mat-list-item>
-        <mat-icon mat-list-icon>domain</mat-icon>
-        <h4>Domain</h4>
-    </mat-list-item>
-    <mat-list-item>
-        <mat-icon mat-list-icon>folder_shared</mat-icon>
-        <h4>Folder shared</h4>
-    </mat-list-item>
-</mat-nav-list> -->
-
-
 <div class="menu-header">
-    <div class="menu-text">
+    <!-- eto asiana image raha hanampy -->
+    <div class="menu-text" [class.hide-header-text]="sideNavcollapsed()">
         <!-- mboarina taille/ mbola ovaina logo na sary voir tuto hide text -->
-        <h1 [style.width.px]="getProfilePicSize()" [style.height.px]="getProfilePicSize()">ASSIGNEMENT</h1>
+        <!-- <h1 [style.width.px]="getProfilePicSize()" [style.height.px]="getProfilePicSize()">ASSIGNEMENT</h1> -->
+        <h1>ASSIGNEMENT</h1>
     </div>
 </div>
 
 <mat-nav-list>
-    <a mat-list-item>
+    <a mat-list-item [routerLink]="'/home'" routerLinkActive #rla1="routerLinkActive" [activated]="rla1.isActive">
         <mat-icon matListItemIcon>analytics</mat-icon>
-        <span matListItemTitle>analytics</span>
+        <span matListItemTitle>Liste des assignements</span>
     </a>
-    <a mat-list-item>
-        <mat-icon matListItemIcon>person</mat-icon>
-        <span matListItemTitle>person</span>
+    <a mat-list-item [routerLink]="'/create'" routerLinkActive #rla2="routerLinkActive" [activated]="rla2.isActive">
+        <mat-icon matListItemIcon>analytics</mat-icon>
+        <span matListItemTitle>Ajout d'assignement</span>
     </a>
-    <a mat-list-item>
+    <!-- <a mat-list-item>
         <mat-icon matListItemIcon>menu</mat-icon>
         <span matListItemTitle>menu</span>
-    </a>
+    </a> -->
 
 
 </mat-nav-list>
 
 
-<!-- <mat-nav-list>
-    <a mat-list-item *ngFor="let item of menuItems()">
-    <mat-icon>/f item.icon )]</mat-icon>
-    <span>[f item.label hk/span>
-    </a>
-    </mat-nav-list> -->

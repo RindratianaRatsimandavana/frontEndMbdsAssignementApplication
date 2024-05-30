@@ -29,11 +29,21 @@
       <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
       </button>
+      <span class="spacer"></span>
+      <!-- <mat-form-field appearance="outline" class="search-bar">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field> -->
+      <button mat-button (click)="deconnexion()" class="logout-button">
+        <mat-icon>person</mat-icon>
+        <span>Déconnexion</span>
+      </button>
+
     </mat-toolbar>
-    <router-outlet></router-outlet>
     <mat-sidenav-container>
       <mat-sidenav opened mode="side" [style.width]="sidenavwidth()">
-        <app-menu [collapsed]="collapsed"></app-menu>
+        <app-menu [collapsed]="collapsed()"></app-menu>
       </mat-sidenav>
       <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">
         <mat-card class="full-page-card">

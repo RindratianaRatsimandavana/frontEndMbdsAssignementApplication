@@ -1,6 +1,7 @@
 import { Component, Input, WritableSignal, computed, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterModule } from '@angular/router';
 
 export type Menultem = {
   icon: string;
@@ -11,34 +12,23 @@ export type Menultem = {
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatListModule, MatIconModule],
+  imports: [MatListModule, MatIconModule,RouterLink,RouterModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  menuItems = signal<Menultem[]>([
-    {
-      icon: 'analytics',
-      label: 'Les assignements',
-      route:'home'
-    },
-    {
-      icon: 'analytics',
-      label: 'Ajout des assignements',
-      route:'create'
-    }
-  ]);
 
-  // @Input() collapsed: boolean = false;
-  @Input() collapsed: WritableSignal<boolean> | undefined;
-
-  getProfilePicSize(): string {
-    return this.collapsed ? '32' : '100';
+  //transfert de l'etat de collapse orincipal dans ce menu sidenav
+  sideNavcollapsed = signal(false);
+  @Input() set collapsed(val: boolean){
+    this.sideNavcollapsed.set(val);
   }
-  // sideNavCollapsed = signal(false);
-  // @Input() set collapsed(val: boolean)(
-  //   this.sideNavCollapsed.set(val);
-  // )
-  // profilePicSize = computed(() => this. sideNavCollapsed() ? '32' : '100');
+
+
+
+
+
+
+ 
 
 }

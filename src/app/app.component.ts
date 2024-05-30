@@ -9,6 +9,11 @@ import { ProfHomeComponent } from './prof-home/prof-home.component';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+
+
 
 
 
@@ -16,7 +21,7 @@ import { LoginComponent } from './login/login.component';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,MatToolbarModule ,MatIconModule,MatButtonModule,
-    MatSidenavModule,MenuComponent,ProfHomeComponent,MatCardModule,LoginComponent],
+    MatSidenavModule,MenuComponent,ProfHomeComponent,MatCardModule,LoginComponent,MatFormFieldModule,MatInputModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,4 +31,16 @@ export class AppComponent {
   sidenavwidth = computed(() => this. collapsed() ? '65px' : '250px');
 
   isConnected = true;
+  valeurBarreRecherche='';
+
+  onSearch(value:any) {
+    console.log('onsearch:', value);
+    
+  }
+
+  deconnexion() {
+    // Ajoutez ici la logique de déconnexion
+    console.log("User logged out");
+    // Par exemple, rediriger vers une page de connexion ou appeler un service d'authentification
+  }
 }

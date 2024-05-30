@@ -1,0 +1,48 @@
+.custom-dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f51b5; /* Couleur personnalisée */
+  }
+  
+  .custom-dialog-content {
+    max-height: 400px; /* Ajuster la hauteur maximale */
+    overflow-y: auto;  /* Activer le défilement si nécessaire */
+    padding: 20px; /* Ajouter un padding personnalisé */
+  }
+  
+  .custom-dialog-actions {
+    padding: 10px; /* Ajouter un padding personnalisé */
+    display: flex;
+    justify-content: flex-start; /* Aligner les boutons à gauche */
+  }
+  
+  .custom-dialog-actions button {
+    margin-right: 10px; /* Ajouter un espace entre les boutons */
+  }
+  
+  .custom-button {
+    background-color: #3f51b5; /* Couleur de fond personnalisée */
+    color: white; /* Couleur du texte */
+    padding: 6px 12px; /* Padding personnalisé */
+    border-radius: 4px; /* Bords arrondis */
+  }
+  
+  .custom-button:hover {
+    background-color: #303f9f; /* Couleur de fond lors du survol */
+  }
+  
+  .image-card-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Optional: Add some space below the image card */
+  }
+  
+  .image-card {
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  mat-card-image {
+    height: 300px; /* Ensure it's a square */
+    object-fit: cover; /* Ensures the image covers the entire area of the mat-card */
+  }
+  

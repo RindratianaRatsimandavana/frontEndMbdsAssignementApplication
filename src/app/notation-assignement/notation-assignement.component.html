@@ -9,6 +9,7 @@
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of getContenusSansNote()" cdkDrag>
           {{item.id_assignement}} ({{item.id_eleve}})
+          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir le contenus</button>
         </div>
       </div>
     </div>
@@ -24,8 +25,10 @@
         <div class="example-box" *ngFor="let item of getContenusAvecNote()" cdkDrag>
           {{item.id_assignement}} ({{item.id_eleve}}) <br/>
           {{item.note}} <br/>
+          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir le contenus</button> 
         </div>
       </div>
+
     </div>
   </div>
   
@@ -40,7 +43,6 @@
         <input type="text" id="commentaire" name="commentaire" [(ngModel)]="commentaire">
         <button type="submit">Soumettre</button>
       </form>
-      <a href="#" (click)="viewDetails()">Voir les détails</a>
     </div>
   </div>
   

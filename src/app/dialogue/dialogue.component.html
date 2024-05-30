@@ -1,0 +1,45 @@
+
+    @if(data.typeDonnee === "assignement"){
+        <div class="image-card-container">
+            <mat-card class="image-card">
+              <!-- <img mat-card-image [src]="data.imageUrl" alt="Image"> -->
+              <img mat-card-image src="assets/images/assi1.jpg" alt="Image">
+            </mat-card>
+          </div>
+        <h2 mat-dialog-title>Details sur l'assignement</h2>
+        <mat-dialog-content class="mat-typography">
+        <h3>Titre-Promotion</h3>
+        <h3>Matière:</h3>
+        <h3>Date de rendu: - en fichier</h3>
+        <h3></h3>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+        <button color="warn" mat-button mat-dialog-close>Fermer</button>
+        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+        </mat-dialog-actions>
+
+
+    }
+    @else{
+        <div class="image-card-container">
+            <mat-card class="image-card">
+              <!-- <img mat-card-image [src]="data.imageUrl" alt="Image"> -->
+              <img mat-card-image src="assets/images/eleve1.jpg" alt="Image">
+            </mat-card>
+          </div>
+        <h2 mat-dialog-title>Contenu de l'assignement rendu par l'élève</h2>
+        <mat-dialog-content class="mat-typography">
+        <h3>Nom élève</h3>
+        <h3>Titre assignement:</h3>
+        <h3>Contenu</h3>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+        <button color="warn" mat-button mat-dialog-close>Fermer</button>
+        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+        </mat-dialog-actions>
+
+    }
+    
+    
+  
+

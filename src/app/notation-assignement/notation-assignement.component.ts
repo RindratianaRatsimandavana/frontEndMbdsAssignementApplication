@@ -7,19 +7,23 @@ import { Assignement } from '../modele/assignement';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 import { Contenu } from '../modele/contenu';
+//import { RouterLink } from '@angular/router';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { DialogueComponent } from '../dialogue/dialogue.component';
+
 
 
 @Component({
   selector: 'app-notation-assignement',
   standalone: true,
-  imports: [CommonModule,CdkDropListGroup, CdkDropList, CdkDrag,FormsModule],
+  imports: [CommonModule,CdkDropListGroup, CdkDropList, CdkDrag,FormsModule,DialogueComponent,MatDialogModule],
   templateUrl: './notation-assignement.component.html',
   styleUrl: './notation-assignement.component.css'
 })
 export class NotationAssignementComponent {
+  constructor(public dialog: MatDialog) {}
   @ViewChild('myModal') modal!: ElementRef;
   
-
   contenus: Contenu[] = [
     { _id: '1', id_assignement: 'Math', id_eleve: 'John', reponse: 'Math', Commentaire: '', note: -1 },
     { _id: '2', id_assignement: 'Science', id_eleve: 'Oli', reponse: 'Science', Commentaire: '', note: 0 }
@@ -28,6 +32,20 @@ export class NotationAssignementComponent {
   noteAttribue = -1;
   idContenuAnoter= '';
   commentaire= '';
+
+  data = {
+    typeDonnee: 'contenu',
+    id: "0"
+  };
+  
+
+  openDialog(valId:string) {
+    this.data.id=valId;
+    console.log("l'idTransmis"+this.data.id);
+    const dialogRef = this.dialog.open(DialogueComponent, {
+      data: this.data
+    });
+  }
   
 
   getContenusSansNote(): Contenu[] {

@@ -1,6 +1,8 @@
 mat-toolbar{
     position: relative;
     z-index: 5;
+    display: flex;
+    align-items: center;
 }
 
 .content{
@@ -25,3 +27,27 @@ mat-sidenav-container {
     flex-grow: 1;
     overflow-y: auto; /* Allows scrolling if content overflows */
   }
+
+
+
+
+  
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .search-bar {
+    width: 300px;
+    margin-right: 16px;
+  }
+  
+  .logout-button {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logout-button mat-icon {
+    margin-right: 8px;
+  }
+  
