@@ -7,5 +7,5 @@ export class Assignement {
   Description!: string;
   upload_fichier!: string; // tsy tadidiko hoe inona moa ny atao eto le fichier ve
   email_reminder!: boolean;
-  id_promotion!: Number;
+  id_promotion!: string;
 }

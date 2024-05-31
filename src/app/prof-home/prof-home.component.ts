@@ -47,7 +47,15 @@ export class ProfHomeComponent {
     private assignmentService:AssignmentService
   ){ }
 
-   
+  private correspondancePromotion = new Map<string, string>([
+    ['6659548968ff5435557e2c23', 'prom_1'],
+    ['6659549868ff5435557e2c25', 'prom_2']
+  ]);
+
+  getCorrespondingPromotion(key: string): string {
+    return this.correspondancePromotion.get(key) || 'Promotion';
+  }
+
 
   data = {
     typeDonnee: 'assignement',

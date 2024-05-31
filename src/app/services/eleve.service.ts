@@ -21,6 +21,8 @@ export class EleveService {
   //   return this.http.get<any>(this.uri + 'logoutEleve');
   // }
   getEleveById(id: String): Observable<any> {
+    console.log("Urllllllll");
+    console.log(this.uri + id);
     return this.http.get<Eleve>(this.uri + id);
   }
 }
