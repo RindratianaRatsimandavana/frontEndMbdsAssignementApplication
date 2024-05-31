@@ -22,7 +22,6 @@ import { Assignement } from '../modele/assignement';
   styleUrl: './prof-home.component.css'
 })
 export class ProfHomeComponent {
-  id="1";
   assignments: Assignement[] = [];
   // cards = Array(10).fill({
   //   title: 'Shiba Inu',
