@@ -10,30 +10,30 @@ export class ContenuService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/';
+  uri = 'http://localhost:3000/contenu/';
 
-  addContenu(formData: FormData): Observable<any> {
-    console.log('ici fromdta ',formData)
-    return this.http.post<Contenu>(this.uri + 'contenu', formData);
+  // addContenu(formData: FormData): Observable<any> {
+  //   console.log('ici fromdta ',formData)
+  //   return this.http.post<Contenu>(this.uri , formData);
+  // }
+
+  // updateContenu(contenu: Contenu): Observable<any> {
+  //   return this.http.put<Contenu>(this.uri  + contenu._id, contenu);
+  // }
+
+  updateNoteContenu(credentials: { note: Number | null | undefined ,commentaire: string | null | undefined }, contenuId: Number): Observable<any> {
+    return this.http.patch<Contenu>(this.uri  + contenuId, credentials);
   }
 
-  updateContenu(contenu: Contenu): Observable<any> {
-    return this.http.put<Contenu>(this.uri + "contenu/" + contenu._id, contenu);
-  }
+  // getContenuById(id_: Number): Observable<any> {
+  //   return this.http.get<Contenu>(this.uri  + id_);
+  // }
 
-  updateNoteContenu(credentials: { note: string | null | undefined }, contenuId: Number): Observable<any> {
-    return this.http.patch<Contenu>(this.uri + "contenu/" + contenuId, credentials);
-  }
-
-  getContenuById(id_: Number): Observable<any> {
-    return this.http.get<Contenu>(this.uri + "contenu/" + id_);
-  }
-
-  getContenuByEleveByAssignment(id_eleve: Number, id_assignment: Number): Observable<any> {
-    return this.http.get<Contenu>(this.uri + "contenu/eleve/" + id_eleve + "/assignment/" + id_assignment);
-  }
+  // getContenuByEleveByAssignment(id_eleve: Number, id_assignment: Number): Observable<any> {
+  //   return this.http.get<Contenu>(this.uri + "eleve/" + id_eleve + "/assignment/" + id_assignment);
+  // }
   
-  getContenuByAssignment(id_assignment: Number): Observable<any> {
-    return this.http.get<Contenu>(this.uri + "contenu/assignment/" + id_assignment);
+  getContenuByAssignment(id_assignment: String): Observable<any> {
+    return this.http.get<Contenu>(this.uri + "assignment/" + id_assignment);
   }
 }

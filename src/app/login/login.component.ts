@@ -55,13 +55,12 @@ export class LoginComponent {
           response => {
             console.log('Login successful:', response);
             if (response.auth) {
-
               localStorage.setItem('token', response.token);
               //this.router.navigate(['/home']);
               // this.ngZone.run(() => {
               //   this.router.navigate(['/home']);
               // });
-              this.router.navigate(['/home/1']).then(() => {
+              this.router.navigate(['/home']).then(() => {
                 window.location.reload();
               });
             }
