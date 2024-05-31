@@ -9,9 +9,8 @@
         <h2 mat-dialog-title>Details sur l'assignement</h2>
         <mat-dialog-content class="mat-typography">
         <h3>Titre: {{(assignement?.titre) }}</h3>
-        <h3>Matière:{{ getCorrespondingMatiere(assignement?.id_matiere) }}</h3>
+        <!-- <h3>Matière:{{ getCorrespondingMatiere(assignement?.id_matiere) }}</h3> -->
         <h3>Promotion:{{ getCorrespondingPromotion(assignement?.id_promotion) }}</h3>
-        <h3>Date de rendu: </h3>
         <h3>{{assignement?.Description}}</h3>
         </mat-dialog-content>
         <mat-dialog-actions align="end">

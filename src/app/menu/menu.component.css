@@ -15,3 +15,17 @@
    opacity:0;
    height: 0px;  
 }
+
+
+
+.assignement-header {
+    display: flex;
+    align-items: center;
+    font-size: 2rem; /* Ajustez la taille de la police selon vos besoins */
+  }
+  
+  .assignement-header .fa-graduation-cap {
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+    color: #000; /* Couleur de l'icône */
+  }
+  

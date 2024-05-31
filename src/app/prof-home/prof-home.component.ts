@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 // import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,7 @@ import { Assignement } from '../modele/assignement';
 @Component({
   selector: 'app-prof-home',
   standalone: true,
-  imports: [MatButtonModule,MatCardModule,RouterLink,MatDialogModule],
+  imports: [MatButtonModule,MatCardModule,RouterLink,MatDialogModule,CommonModule],
   templateUrl: './prof-home.component.html',
   styleUrl: './prof-home.component.css'
 })
@@ -47,15 +48,17 @@ export class ProfHomeComponent {
     private assignmentService:AssignmentService
   ){ }
 
-  private correspondancePromotion = new Map<string, string>([
-    ['6659548968ff5435557e2c23', 'prom_1'],
-    ['6659549868ff5435557e2c25', 'prom_2']
+  private correspondancePromotion = new Map<String, String>([
+    ['665795e56100947559e9d050', 'Promotion 1'],
+    ['665795ee6100947559e9d053', 'Promotion 2']
   ]);
 
-  getCorrespondingPromotion(key: string): string {
-    return this.correspondancePromotion.get(key) || 'Promotion';
+  getCorrespondingPromotion(key: String | undefined): String {
+    if (key === undefined) {
+      return 'prom'; // Ou une valeur appropriée pour les cas undefined
+    }
+    return this.correspondancePromotion.get(key) || 'prom';
   }
-
 
   data = {
     typeDonnee: 'assignement',

@@ -54,10 +54,7 @@ export class NotationAssignementComponent implements OnInit{
   // ];
 
   private correspondanceEleve = new Map<String, String>([
-    ['665955acbdc14694fe1c0e97', 'Pascal Bruno'],
-    ['66595602bdc14694fe1c0e99', 'Patrick Murielle'],
-    ['6659565abdc14694fe1c0e9b', 'Erica Salazar '],
-    ['6659569dbdc14694fe1c0e9d', 'Fernando Rodriguez']
+    ['665796726100947559e9d05d', 'Garcia Manon']
   ]);
 
   getCorrespondingEleve(key: String | undefined): String {
@@ -67,7 +64,7 @@ export class NotationAssignementComponent implements OnInit{
     return this.correspondanceEleve.get(key) || 'eleve';
   }
 
-  noteAttribue = -1;
+  noteAttribue = 0;
   idContenuAnoter= '';
   commentaire= '';
 
@@ -89,6 +86,11 @@ export class NotationAssignementComponent implements OnInit{
     .subscribe(assignment => {
       this.contenus = assignment;
     });
+  }
+
+  loadData()
+  {
+
   }
 
 
@@ -186,6 +188,7 @@ export class NotationAssignementComponent implements OnInit{
       .subscribe((message) => {
         console.log(message);
         console.log("après update");
+        this.refreshContenus();
       });
 
     // const item = this.contenus.find(c => c._id === this.idContenuAnoter);
@@ -196,10 +199,13 @@ export class NotationAssignementComponent implements OnInit{
     this.closeModal();
   }
 
-
-  
-
-
+  refreshContenus() {
+    const id = this.route.snapshot.params['id'];
+    this.contenutService.getContenuByAssignment(id)
+      .subscribe(assignment => {
+        this.contenus = assignment;
+      });
+  }
 
 
   viewDetails() {

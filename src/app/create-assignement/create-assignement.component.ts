@@ -37,11 +37,39 @@ import { Router } from '@angular/router';
   styleUrl: './create-assignement.component.css'
 })
 export class CreateAssignementComponent {
-  listePromotion: string[] = ['6659548968ff5435557e2c23', '6659549868ff5435557e2c25'];
+
+  
+  idMatiere: string | null = localStorage.getItem('id_matiere');
+  listePromotion: string[] = ['promotion_1', 'promotion_2'];
   listeTypeArendre: string[] = ['PDF', 'Video'];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  thirdFormGroup: FormGroup; 
+
+  private correspondancePromotion = new Map<String, String>([
+    ['665795e56100947559e9d050', 'Promotion 1'],
+    ['665795ee6100947559e9d053', 'Promotion 2']
+  ]);
+
+  getCorrespondingPromotion(key: String | undefined): String {
+    if (key === undefined) {
+      return 'prom'; // Ou une valeur appropriée pour les cas undefined
+    }
+    return this.correspondancePromotion.get(key) || 'prom';
+  }
+
+  private correspondanceMatiere = new Map<String, String>([
+    ['665796086100947559e9d056', 'Grails'],     
+    ['6657961c6100947559e9d059', 'Web avancé']
+  ]);
+
+  getCorrespondingMatiere(key: String | undefined): String {
+    if (key === undefined) {
+      return 'mat'; // Ou une valeur appropriée pour les cas undefined
+    }
+    return this.correspondancePromotion.get(key) || 'mat';
+   
+  }
 
   // firstFormGroup = this._formBuilder.group({
   //   firstCtrl: ['', Validators.required],
@@ -57,7 +85,7 @@ export class CreateAssignementComponent {
   ) {
     this.firstFormGroup = this._formBuilder.group({
       titre: ['', Validators.required],
-      matiere: ['', Validators.required],
+      //matiere: ['', Validators.required],
       classe: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -78,6 +106,7 @@ export class CreateAssignementComponent {
       titre: this.firstFormGroup.value.titre,
       dateRendu: this.secondFormGroup.value.dateDeRendu,
       id_matiere: this.firstFormGroup.value.matiere,
+     // id_matiere: localStorage.getItem('id_matiere'), 
       //id_matiere: '0',
       id_type_a_rendre: this.secondFormGroup.value.typeFichier,
       Description: this.secondFormGroup.value.description,

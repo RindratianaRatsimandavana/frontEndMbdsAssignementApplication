@@ -53,9 +53,10 @@ export class LoginComponent {
       if (this.status) {
         this.profService.loginProf(login).subscribe(
           response => {
-            console.log('Login successful:', response);
+            console.log('Connexion réussie:', response);
             if (response.auth) {
               localStorage.setItem('token', response.token);
+              localStorage.setItem('id_matiere', response.id_matiere);
               //this.router.navigate(['/home']);
               // this.ngZone.run(() => {
               //   this.router.navigate(['/home']);
