@@ -162,13 +162,31 @@ export class NotationAssignementComponent implements OnInit{
     console.log('Note:', this.noteAttribue);
     console.log('Commentaire:', this.commentaire);
 
-    const item = this.contenus.find(c => c._id === this.idContenuAnoter);
-    if (item) {
-      item.note = this.noteAttribue!;
+    const objet = {
+      note:this.noteAttribue, 
+      commentaire:this.commentaire
     }
+    
+    this.contenutService
+      .updateNoteContenu(objet,this.idContenuAnoter)
+      .subscribe((message) => {
+        console.log(message);
+        console.log("après update");
+      });
+
+    // const item = this.contenus.find(c => c._id === this.idContenuAnoter);
+    // if (item) {
+    //   item.note = this.noteAttribue!;
+    // }
 
     this.closeModal();
   }
+
+
+  
+
+
+
 
   viewDetails() {
     console.log('Show details for ID:', this.idContenuAnoter);

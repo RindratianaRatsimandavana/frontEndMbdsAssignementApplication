@@ -21,7 +21,7 @@ export class ContenuService {
   //   return this.http.put<Contenu>(this.uri  + contenu._id, contenu);
   // }
 
-  updateNoteContenu(credentials: { note: Number | null | undefined ,commentaire: string | null | undefined }, contenuId: Number): Observable<any> {
+  updateNoteContenu(credentials: { note: Number | null | undefined ,commentaire: string | null | undefined }, contenuId: string): Observable<any> {
     return this.http.patch<Contenu>(this.uri  + contenuId, credentials);
   }
 

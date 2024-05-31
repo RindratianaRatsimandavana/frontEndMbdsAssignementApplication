@@ -37,7 +37,7 @@ import { Router } from '@angular/router';
   styleUrl: './create-assignement.component.css'
 })
 export class CreateAssignementComponent {
-  listePromotion: string[] = ['Première année', 'Deuxième année', 'Troisième année'];
+  listePromotion: string[] = ['6659548968ff5435557e2c23', '6659549868ff5435557e2c25'];
   listeTypeArendre: string[] = ['PDF', 'Video'];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -76,28 +76,29 @@ export class CreateAssignementComponent {
     // console.log('Second Form Data:', this.secondFormGroup.value);
     const assignementData = {
       titre: this.firstFormGroup.value.titre,
-      dateDeRendu: this.secondFormGroup.value.dateDeRendu,
-      // id_matiere: this.firstFormGroup.value.matiere,
-      id_matiere: 0,
+      dateRendu: this.secondFormGroup.value.dateDeRendu,
+      id_matiere: this.firstFormGroup.value.matiere,
+      //id_matiere: '0',
       id_type_a_rendre: this.secondFormGroup.value.typeFichier,
       Description: this.secondFormGroup.value.description,
       upload_fichier: '', // atao inona moa ty
       email_reminder: this.thirdFormGroup.value.emailReminder,
-      // id_promotion: this.firstFormGroup.value.classe,
-      id_promotion: 1,
-      evalue: false
+      id_promotion: this.firstFormGroup.value.classe//,
+      //evalue: false
     };
     this.assignmentService
       .addAssignment(assignementData)
       .subscribe((reponse) => {
         console.log(reponse);
+        window.location.reload();
         // On navigue pour afficher la liste des assignments
         // en utilisant le router de manière programmatique
       },
         error => {
           console.error('Login error:', error);
+          alert(error);
           // this.openSnackBar('Login error', 'Close');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/create']);
 
         });
     console.log('Assignement Data:', assignementData);

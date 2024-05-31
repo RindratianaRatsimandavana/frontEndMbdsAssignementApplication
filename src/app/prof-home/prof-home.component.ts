@@ -41,6 +41,8 @@ export class ProfHomeComponent {
   //   arrows: true
   // };
   //constructor(public dialog: MatDialog, private route:ActivatedRoute,private router:Router) {}
+
+  
   constructor(public dialog: MatDialog,private route:ActivatedRoute,private router:Router,
     private assignmentService:AssignmentService
   ){ }
@@ -62,7 +64,7 @@ export class ProfHomeComponent {
     // On recupere l'id de l'assignment dans l'URL à l'aide de ActivatedRoute
     const id = this.route.snapshot.params['id'];
     // On utilise le service pour récupérer l'assignment avec cet id
-    this.assignmentService.getAssignmentByMatiere(id)
+    this.assignmentService.getAssignmentByProf()
     .subscribe(assignment => {
       this.assignments = assignment;
     });

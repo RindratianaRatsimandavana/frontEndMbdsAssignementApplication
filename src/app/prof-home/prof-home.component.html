@@ -35,12 +35,12 @@
         <img mat-card-image src="assets/images/assi1.jpg" alt="img" class="small-image">
         <mat-card-content>
           <p style="text-align: center;">
-            {{a.dateDeRendu}}
+            {{a.dateRendu}}
           </p>
         </mat-card-content>
         <mat-card-actions>
         <!-- traitement au cas ou null -->
-          <button mat-button (click)="a._id ? openDialog(a._id.toString()) : null">Voir les détails</button>
+          <button mat-button (click)="a._id ? openDialog(a._id) : null">Voir les détails</button>
           <button mat-button routerLink="/notation/{{a._id}}">Voir les rendus</button>
         </mat-card-actions>
       </mat-card>
