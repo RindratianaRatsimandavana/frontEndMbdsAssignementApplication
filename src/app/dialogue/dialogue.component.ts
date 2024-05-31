@@ -20,7 +20,6 @@ export class DialogueComponent implements OnInit{
 
   }
 
-    
   private correspondancePromotion = new Map<String, String>([
     ['665795e56100947559e9d050', 'Promotion 1'],
     ['665795ee6100947559e9d053', 'Promotion 2']
@@ -47,9 +46,6 @@ export class DialogueComponent implements OnInit{
    
   }
 
-        
-     
-
   private correspondanceEleve = new Map<String, String>([
     ['665796726100947559e9d05d', 'Garcia Manon']
   ]);
@@ -60,7 +56,6 @@ export class DialogueComponent implements OnInit{
     }
     return this.correspondanceEleve.get(key) || 'prom';
   }
-
 
   ngOnInit(): void {
    this.loadData();

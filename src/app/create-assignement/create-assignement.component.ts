@@ -71,12 +71,6 @@ export class CreateAssignementComponent {
    
   }
 
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
-  // secondFormGroup = this._formBuilder.group({
-  //   secondCtrl: ['', Validators.required],
-  // });
   isLinear = true;
 
   constructor(private _formBuilder: FormBuilder,
@@ -100,38 +94,28 @@ export class CreateAssignementComponent {
 
   }
   submitForms() {
-    // console.log('First Form Data:', this.firstFormGroup.value);
-    // console.log('Second Form Data:', this.secondFormGroup.value);
     const assignementData = {
       titre: this.firstFormGroup.value.titre,
       dateRendu: this.secondFormGroup.value.dateDeRendu,
       id_matiere: this.firstFormGroup.value.matiere,
-     // id_matiere: localStorage.getItem('id_matiere'), 
-      //id_matiere: '0',
       id_type_a_rendre: this.secondFormGroup.value.typeFichier,
       Description: this.secondFormGroup.value.description,
-      upload_fichier: '', // atao inona moa ty
+      upload_fichier: '',
       email_reminder: this.thirdFormGroup.value.emailReminder,
-      id_promotion: this.firstFormGroup.value.classe//,
-      //evalue: false
+      id_promotion: this.firstFormGroup.value.classe
     };
     this.assignmentService
       .addAssignment(assignementData)
       .subscribe((reponse) => {
         console.log(reponse);
         window.location.reload();
-        // On navigue pour afficher la liste des assignments
-        // en utilisant le router de manière programmatique
       },
         error => {
-          console.error('Login error:', error);
-          alert(error);
-          // this.openSnackBar('Login error', 'Close');
           this.router.navigate(['/create']);
 
         });
     console.log('Assignement Data:', assignementData);
-    // Insérer ici le code pour soumettre les données via une requête POST
+    
   }
 
 }
