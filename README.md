@@ -20,7 +20,9 @@ Cette partie est la partie FrontEnd du projet dévellopé sur Angular17.
 - Nous allons maintenant exécuter une commande essentielle pour préparer l'environnement de développement d'un projet Node.js en installant toutes les dépendances nécessaires : 
 - Puis lancer l'application avec la commande : ng serve --o
 - En local, l'application démarre sur le port 4200.   
-    `http://localhost:4200/`  
+    `http://localhost:4200/` 
+- Une petite remarque,on a utilisé le Map pour faire des correspondances entre les id et les valeurs dans le front pour faire une correspondance rapide sans aller chercher dans la base de donnée, juste pour nos peu de données mais bien sur pas en cas pratique .   
+    `http://localhost:4200/`   
     
 # Deploiement 
 On a utilisé le gitHub de N° 48 RATSIMANDAVANA Rindratiana pour le deploiement du front.
