@@ -40,7 +40,7 @@ export class NotationAssignementComponent implements OnInit{
   //     reponse: 'Math',
   //     commentaire: '',
   //     note: -1,
-  //     dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert string to Date
+  //     dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert String to Date
   //   },
   //   {
   //     _id: '2',
@@ -49,9 +49,23 @@ export class NotationAssignementComponent implements OnInit{
   //     reponse: 'Science',
   //     commentaire: '',
   //     note: 0,
-  //     dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert string to Date
+  //     dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert String to Date
   //   }
   // ];
+
+  private correspondanceEleve = new Map<String, String>([
+    ['665955acbdc14694fe1c0e97', 'Pascal Bruno'],
+    ['66595602bdc14694fe1c0e99', 'Patrick Murielle'],
+    ['6659565abdc14694fe1c0e9b', 'Erica Salazar '],
+    ['6659569dbdc14694fe1c0e9d', 'Fernando Rodriguez']
+  ]);
+
+  getCorrespondingEleve(key: String | undefined): String {
+    if (key === undefined) {
+      return 'eleve'; // Ou une valeur appropriée pour les cas undefined
+    }
+    return this.correspondanceEleve.get(key) || 'eleve';
+  }
 
   noteAttribue = -1;
   idContenuAnoter= '';

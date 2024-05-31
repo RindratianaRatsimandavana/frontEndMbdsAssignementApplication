@@ -1,9 +1,9 @@
 export class Eleve {
-    _id?: Number;
+    _id?: String;
     nom ?: String;
     prenom ?: String;
     mail ?: String ;
     mdp ?: String;
-    id_promotion ?: Number;
+    id_promotion ?: String;
     photo ?: String;
 }
