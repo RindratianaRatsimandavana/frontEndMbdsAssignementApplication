@@ -5,9 +5,14 @@ import {MatCardModule} from '@angular/material/card';
 // import {SlickCarouselModule  } from 'ngx-slick-carousel';
 //import { NgxCarouselModule } from 'ngx-carousel';
 //import 'hammerjs';
+
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { DialogueComponent } from '../dialogue/dialogue.component';
+import { AssignmentService } from '../services/assignment.service';
+import { Assignement } from '../modele/assignement';
 
 @Component({
   selector: 'app-prof-home',
@@ -18,6 +23,7 @@ import { DialogueComponent } from '../dialogue/dialogue.component';
 })
 export class ProfHomeComponent {
   id="1";
+  assignments: Assignement[] = [];
   // cards = Array(10).fill({
   //   title: 'Shiba Inu',
   //   subtitle: 'Dog Breed',
@@ -35,12 +41,33 @@ export class ProfHomeComponent {
   //   infinite: true,
   //   arrows: true
   // };
-  constructor(public dialog: MatDialog) {}
+  //constructor(public dialog: MatDialog, private route:ActivatedRoute,private router:Router) {}
+  constructor(public dialog: MatDialog,private route:ActivatedRoute,private router:Router,
+    private assignmentService:AssignmentService
+  ){ }
+
+   
 
   data = {
     typeDonnee: 'assignement',
     id: '0'
   };
+
+
+  ngOnInit() {
+    // Recuperation des query params (ce qui suit le ? dans l'url)
+    //console.log(this.route.snapshot.queryParams);
+    // Recuperation des fragment (ce qui suit le # dans l'url)
+    //console.log(this.route.snapshot.fragment);
+
+    // On recupere l'id de l'assignment dans l'URL à l'aide de ActivatedRoute
+    const id = this.route.snapshot.params['id'];
+    // On utilise le service pour récupérer l'assignment avec cet id
+    this.assignmentService.getAssignmentByMatiere(id)
+    .subscribe(assignment => {
+      this.assignments = assignment;
+    });
+  }
 
   openDialog(valId:string) {
     //id fotsiny no recuperena eto fa any amin'ny dialogue no misy traitement recuperation ana 

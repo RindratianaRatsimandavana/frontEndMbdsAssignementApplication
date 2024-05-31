@@ -4,19 +4,21 @@ import { CreateAssignementComponent } from './create-assignement/create-assignem
 import { LoginComponent } from './login/login.component';
 import { NotationAssignementComponent } from './notation-assignement/notation-assignement.component';
 import { SoumissionAssignementComponent } from './soumission-assignement/soumission-assignement.component';
+import { AppComponent } from './app.component';
 
 //import { TestUploadComponent } from './testasupp/test-upload.component';
-
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'home', component: ProfHomeComponent },
-    { path: 'login', component: LoginComponent },
-  { path: 'notation/:id', component: NotationAssignementComponent },
-  { path: 'create', component: CreateAssignementComponent },
-  { path: 'submit', component: SoumissionAssignementComponent }
-  //{ path: 'test', component: TestUploadComponent }
+  { path: '', redirectTo: '/create', pathMatch: 'full' },
+  { path: 'home/:id', component: ProfHomeComponent, canActivate: [authGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'notation/:id', component: NotationAssignementComponent, canActivate: [authGuard] },
+  { path: 'create', component: CreateAssignementComponent, canActivate: [authGuard] },
+  { path: 'submit', component: SoumissionAssignementComponent, canActivate: [authGuard] }
+  //{ path: 'test', component: TestUploadComponent, canActivate: [authGuard] }
 
  
 ];
+
 

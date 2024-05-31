@@ -19,17 +19,17 @@ export class AssignmentService {
 
   updateAssignment(assignment: Assignement): Observable<any> {
     //return of("Assignment modifié avec succès");
-    return this.http.put<Assignement>(this.uri + "/assignment/" + assignment._id, assignment);
+    return this.http.put<Assignement>(this.uri + "assignment/" + assignment._id, assignment);
   }
 
   getAssignmentByPromotion(id_promotion : Number): Observable<any> {
     //return of("Assignment modifié avec succès");
-    return this.http.get<Assignement>(this.uri + "/" + id_promotion);
+    return this.http.get<Assignement>(this.uri + "/assignment" + id_promotion);
   }
 
   getAssignmentByMatiere(id_matiere : Number): Observable<any> {
     //return of("Assignment modifié avec succès");
-    return this.http.get<Assignement>(this.uri + "/" + id_matiere);
+    return this.http.get<Assignement>(this.uri + "assignment/" + id_matiere);
   }
 
 }

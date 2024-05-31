@@ -10,6 +10,10 @@ import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+//import { NgZone } from '@angular/core';
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -18,7 +22,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule],
+    MatCardModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -51,15 +56,21 @@ export class LoginComponent {
             console.log('Login successful:', response);
             if (response.auth) {
 
-              this.router.navigate(['/create']);
               localStorage.setItem('token', response.token);
-              ;
+              //this.router.navigate(['/home']);
+              // this.ngZone.run(() => {
+              //   this.router.navigate(['/home']);
+              // });
+              this.router.navigate(['/home/1']).then(() => {
+                window.location.reload();
+              });
             }
 
           },
           error => {
             console.error('Login error:', error);
             this.openSnackBar('Login error', 'Close');
+            //alert("")
           }
         );
       }

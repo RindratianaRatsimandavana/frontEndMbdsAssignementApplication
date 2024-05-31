@@ -9,7 +9,7 @@
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of getContenusSansNote()" cdkDrag>
           {{item.id_assignment}} ({{item.id_eleve}})
-          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir le contenus</button>
+          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir l'élève'</button>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="example-box" *ngFor="let item of getContenusAvecNote()" cdkDrag>
           {{item.id_assignment}} ({{item.id_eleve}}) <br/>
           {{item.note}} <br/>
-          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir le contenus</button> 
+          <button mat-button (click)="item._id ? openDialog(item._id.toString()) : null">Voir l'éleve"'</button> 
         </div>
       </div>
 

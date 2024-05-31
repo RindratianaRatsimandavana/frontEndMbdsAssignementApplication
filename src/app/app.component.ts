@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal,OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+
+import { Router } from '@angular/router';
+
 
 
 
@@ -25,13 +28,25 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'assignement_application';
   collapsed = signal(false);
   sidenavwidth = computed(() => this. collapsed() ? '65px' : '250px');
 
+
   isConnected = true;
   valeurBarreRecherche='';
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.checkToken();
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('token');
+    this.isConnected = !!token; // will be true if token exists, false otherwise
+  }
 
   onSearch(value:any) {
     console.log('onsearch:', value);
@@ -39,8 +54,8 @@ export class AppComponent {
   }
 
   deconnexion() {
-    // Ajoutez ici la logique de déconnexion
-    console.log("User logged out");
-    // Par exemple, rediriger vers une page de connexion ou appeler un service d'authentification
+    localStorage.removeItem('token');
+    this.isConnected = false;
+    this.router.navigate(['/login']);
   }
 }

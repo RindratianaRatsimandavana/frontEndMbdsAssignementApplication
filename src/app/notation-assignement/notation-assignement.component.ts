@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   CdkDragDrop,CdkDrag,CdkDropList,CdkDropListGroup,moveItemInArray,transferArrayItem,
 } from '@angular/cdk/drag-drop';
@@ -11,39 +11,47 @@ import { Contenu } from '../modele/contenu';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { DialogueComponent } from '../dialogue/dialogue.component';
 
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { ContenuService } from '../services/contenu.service';
+
 
 
 @Component({
   selector: 'app-notation-assignement',
   standalone: true,
-  imports: [CommonModule,CdkDropListGroup, CdkDropList, CdkDrag,FormsModule,DialogueComponent,MatDialogModule],
+  imports: [CommonModule,CdkDropListGroup, CdkDropList, CdkDrag,FormsModule,DialogueComponent,MatDialogModule,RouterLink],
   templateUrl: './notation-assignement.component.html',
   styleUrl: './notation-assignement.component.css'
 })
-export class NotationAssignementComponent {
-  constructor(public dialog: MatDialog) {}
+export class NotationAssignementComponent implements OnInit{
+  constructor(public dialog: MatDialog,private route:ActivatedRoute,private router:Router,
+    private contenutService:ContenuService) {}
   @ViewChild('myModal') modal!: ElementRef;
+
+  contenus: Contenu[] = [];
   
-  contenus: Contenu[] = [
-    {
-      _id: '1',
-      id_assignment: 1,
-      id_eleve: 1,
-      reponse: 'Math',
-      commentaire: '',
-      note: -1,
-      dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert string to Date
-    },
-    {
-      _id: '2',
-      id_assignment: 2,
-      id_eleve: 2,
-      reponse: 'Science',
-      commentaire: '',
-      note: 0,
-      dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert string to Date
-    }
-  ];
+  // contenus: Contenu[] = [
+  //   {
+  //     _id: '1',
+  //     id_assignment: 1,
+  //     id_eleve: 1,
+  //     reponse: 'Math',
+  //     commentaire: '',
+  //     note: -1,
+  //     dateRendu: new Date('2024-05-27T14:48:00.000Z') // Convert string to Date
+  //   },
+  //   {
+  //     _id: '2',
+  //     id_assignment: 2,
+  //     id_eleve: 2,
+  //     reponse: 'Science',
+  //     commentaire: '',
+  //     note: 0,
+  //     dateRendu: new Date('2024-05-28T14:48:00.000Z') // Convert string to Date
+  //   }
+  // ];
 
   noteAttribue = -1;
   idContenuAnoter= '';
@@ -54,6 +62,21 @@ export class NotationAssignementComponent {
     id: "0"
   };
   
+  ngOnInit() {
+    // Recuperation des query params (ce qui suit le ? dans l'url)
+    //console.log(this.route.snapshot.queryParams);
+    // Recuperation des fragment (ce qui suit le # dans l'url)
+    //console.log(this.route.snapshot.fragment);
+
+    // On recupere l'id de l'assignment dans l'URL à l'aide de ActivatedRoute
+    const id = this.route.snapshot.params['id'];
+    // On utilise le service pour récupérer l'assignment avec cet id
+    this.contenutService.getContenuByAssignment(id)
+    .subscribe(assignment => {
+      this.contenus = assignment;
+    });
+  }
+
 
   openDialog(valId:string) {
     this.data.id=valId;
@@ -65,11 +88,11 @@ export class NotationAssignementComponent {
   
 
   getContenusSansNote(): Contenu[] {
-    return this.contenus.filter(item => item.note === -1);
+    return this.contenus.filter(item => item.siNote == false);
   }
 
   getContenusAvecNote(): Contenu[] {
-    return this.contenus.filter(item => item.note !== -1);
+    return this.contenus.filter(item => item.siNote == true);
   }
 
 

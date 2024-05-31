@@ -5,6 +5,7 @@ export class Contenu {
     reponse?: string;
     commentaire?: string;
     note?: number;
-    dateRendu?: Date
+    dateRendu?: Date;
+    siNote?: boolean;
 }
 
