@@ -1,4 +1,3 @@
-## AssigmentsBackElodie-Rindra   
 # Collabrateur :  
 N° 1 ANDRIAMAHANINTSOA Elodie  
 N° 48 RATSIMANDAVANA Rindratiana Holiniaina  
