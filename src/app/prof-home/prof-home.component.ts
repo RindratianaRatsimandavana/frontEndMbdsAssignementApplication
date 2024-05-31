@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 // import { BrowserModule } from '@angular/platform-browser';
 // import {SlickCarouselModule  } from 'ngx-slick-carousel';
 //import { NgxCarouselModule } from 'ngx-carousel';
@@ -17,7 +18,7 @@ import { Assignement } from '../modele/assignement';
 @Component({
   selector: 'app-prof-home',
   standalone: true,
-  imports: [MatButtonModule,MatCardModule,RouterLink,MatDialogModule],
+  imports: [MatButtonModule,MatCardModule,RouterLink,MatDialogModule,CommonModule],
   templateUrl: './prof-home.component.html',
   styleUrl: './prof-home.component.css'
 })

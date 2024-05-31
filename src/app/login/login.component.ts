@@ -9,6 +9,8 @@ import { ProfService } from '../services/prof.service';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { EleveService } from '../services/eleve.service';
 
 
 //import { NgZone } from '@angular/core';
@@ -22,7 +24,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -30,7 +33,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent {
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    role: ['prof', Validators.required]
   });
 
   status = true;
@@ -38,7 +42,8 @@ export class LoginComponent {
     private profService: ProfService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private eleveService: EleveService
   ) { }
 
   onSubmit() {
@@ -50,7 +55,9 @@ export class LoginComponent {
         email: loginData.email,
         password: loginData.password
       }
-      if (this.status) {
+      const selectedRole = this.loginForm.get('role')?.value;
+      console.log('Rôle sélectionné :', selectedRole);
+      if (selectedRole == "prof") {
         this.profService.loginProf(login).subscribe(
           response => {
             console.log('Login successful:', response);
@@ -61,6 +68,28 @@ export class LoginComponent {
               //   this.router.navigate(['/home']);
               // });
               this.router.navigate(['/home']).then(() => {
+                window.location.reload();
+              });
+            }
+
+          },
+          error => {
+            console.error('Login error:', error);
+            this.openSnackBar('Login error', 'Close');
+            //alert("")
+          }
+        );
+      } else {
+        this.eleveService.loginEleve(login).subscribe(
+          response => {
+            console.log('Login successful:', response);
+            if (response.auth) {
+              localStorage.setItem('token', response.token);
+              //this.router.navigate(['/home']);
+              // this.ngZone.run(() => {
+              //   this.router.navigate(['/home']);
+              // });
+              this.router.navigate(['/homeEleve']).then(() => {
                 window.location.reload();
               });
             }

@@ -10,19 +10,19 @@ export class EleveService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:3000/eleve/';
+  uri = 'http://localhost:3000/';
 
 
-  // loginEleve(credentials: { email: string | null | undefined; password: string | null | undefined; }): Observable<any> {
-  //   return this.http.post<any>(this.uri + 'loginEleve', credentials);
-  // }
+  loginEleve(credentials: { email: string | null | undefined; password: string | null | undefined; }): Observable<any> {
+    return this.http.post<any>(this.uri + 'loginEleve', credentials);
+  }
 
-  // logOutEleve(): Observable<any> {
-  //   return this.http.get<any>(this.uri + 'logoutEleve');
-  // }
+  logOutEleve(): Observable<any> {
+    return this.http.get<any>(this.uri + 'logoutEleve');
+  }
   getEleveById(id: String): Observable<any> {
     console.log("Urllllllll");
     console.log(this.uri + id);
-    return this.http.get<Eleve>(this.uri + id);
+    return this.http.get<Eleve>(this.uri +'eleve/'+ id);
   }
 }

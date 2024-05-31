@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 //import { TestUploadComponent } from './testasupp/test-upload.component';
 import { authGuard } from './auth.guard';
+import { EleveHomeComponent } from './eleve-home/eleve-home.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/create', pathMatch: 'full' },
@@ -15,7 +16,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'notation/:id', component: NotationAssignementComponent, canActivate: [authGuard] },
   { path: 'create', component: CreateAssignementComponent, canActivate: [authGuard] },
-  { path: 'submit', component: SoumissionAssignementComponent, canActivate: [authGuard] }
+  { path: 'submit', component: SoumissionAssignementComponent, canActivate: [authGuard] },
+  { path: 'homeEleve', component: EleveHomeComponent, canActivate: [authGuard] },
+  
   //{ path: 'test', component: TestUploadComponent, canActivate: [authGuard] }
 
  

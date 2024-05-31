@@ -86,6 +86,7 @@ export class CreateAssignementComponent {
       id_promotion: this.firstFormGroup.value.classe//,
       //evalue: false
     };
+    alert(JSON.stringify(assignementData));
     this.assignmentService
       .addAssignment(assignementData)
       .subscribe((reponse) => {

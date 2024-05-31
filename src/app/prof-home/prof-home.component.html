@@ -21,41 +21,31 @@
           </mat-card>
   </div> -->
 
-  <div class="card-container">
-
-    
-
-    @for(a of assignments; track a.titre) {
-      <mat-card class="example-card small-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{a.titre}}</mat-card-title>
-          <mat-card-subtitle>Promotion: {{ getCorrespondingPromotion(a.id_promotion) }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="assets/images/assi1.jpg" alt="img" class="small-image">
-        <mat-card-content>
-          <p style="text-align: center;">
-            {{a.dateRendu}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-        <!-- traitement au cas ou null -->
-          <button mat-button (click)="a._id ? openDialog(a._id) : null">Voir les détails</button>
-          <button mat-button routerLink="/notation/{{a._id}}">Voir les rendus</button>
-        </mat-card-actions>
-      </mat-card>
-      
-    }
+<div class="card-container">
 
 
 
+  @for(a of assignments; track a.titre) {
+  <mat-card class="example-card small-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{a.titre}}</mat-card-title>
+      <mat-card-subtitle>Promotion: {{ getCorrespondingPromotion(a.id_promotion) }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="assets/images/assi1.jpg" alt="img" class="small-image">
+    <mat-card-content>
+      <p style="text-align: center;">
+        {{ a.dateRendu | date: 'yyyy-MM-dd' }}
+      </p>
 
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- traitement au cas ou null -->
+      <button mat-button (click)="a._id ? openDialog(a._id) : null">Voir les détails</button>
+      <button mat-button routerLink="/notation/{{a._id}}">Voir les rendus {{a._id}}</button>
+    </mat-card-actions>
+  </mat-card>
 
+  }
 
-
-
-
-
-
-   
 </div>

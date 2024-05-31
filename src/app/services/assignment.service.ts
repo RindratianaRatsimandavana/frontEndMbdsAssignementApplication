@@ -22,10 +22,10 @@ export class AssignmentService {
   //   return this.http.put<Assignement>(this.uri + assignment._id, assignment);
   // }
 
-  // getAssignmentByPromotion(id_promotion : Number): Observable<any> {
-  //   //return of("Assignment modifié avec succès");
-  //   return this.http.get<Assignement>(this.uri + id_promotion);
-  // }
+  getAssignmentByPromotion(): Observable<any> {
+    //return of("Assignment modifié avec succès");
+    return this.http.get<Assignement>(this.uri +'eleve');
+  }
 
   // getAssignmentByMatiere(id_matiere : Number): Observable<any> {
   //   //return of("Assignment modifié avec succès");

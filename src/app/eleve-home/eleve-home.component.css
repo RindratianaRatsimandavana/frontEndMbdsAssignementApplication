@@ -1,0 +1,17 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Aligne les cartes à gauche */
+    gap: 10px; /* Ajoute un espacement entre les cartes */
+  }
+  
+  .small-card {
+    width: 250px; /* Ajustez cette valeur pour la largeur souhaitée des cartes */
+    margin: 10px;
+  }
+  
+  .small-image {
+    height: 150px; /* Ajustez cette valeur pour la hauteur souhaitée des images */
+    object-fit: cover;
+  }
+  

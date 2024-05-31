@@ -1,30 +1,35 @@
 <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Connexion</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="Enter your email">
-          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-            Email obligatoire
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-            Invalid email address
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" formControlName="password" placeholder="Enter your password">
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-            Mot de passe obligatoire
-          </mat-error>
-        </mat-form-field>
-        <div class="login-button">
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>Connexion</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email">
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          Email obligatoire
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+          Invalid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter your password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Mot de passe obligatoire
+        </mat-error>
+      </mat-form-field>
+      <mat-radio-group formControlName="role">
+        <mat-radio-button value="prof">Prof</mat-radio-button>
+        <mat-radio-button value="etudiant">Étudiant</mat-radio-button>
+      </mat-radio-group>
+      <div class="login-button">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+      </div>
+    </form>
+    <!-- Afficher la valeur sélectionnée -->
+    <p>Se connecter entant que  : {{ loginForm.get('role')?.value }}</p>
+  </mat-card-content>
+</mat-card>
